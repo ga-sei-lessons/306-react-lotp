@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
+// css module
+import "./App.css"
+import Movie from "./Movie"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const movies = [
+  {
+    title: "The Fellowship of the Ring",
+    hours: "2",
+    minutes: "58"
+  },
+  {
+    title: "The Two Towers",
+    hours: "2",
+    minutes: "59"
+  },
+  {
+    title: "The Return of the King",
+    hours: "3",
+    minutes: "21"
+  },
+  {
+    title: "The Hobbit Part 1"
+  }
+]
+
+export default class App extends Component {
+  render() {
+    const movieComponents = movies.map((movie, i) => {
+      return (
+        <Movie 
+          key={'movie' + i}
+          title={movie.title}
+          hours={movie.hours}
+          minutes={movie.minutes}
+        />
+      )
+    })
+
+    return (
+      <div className="dark-background">
+        <h1>Lord of the Props</h1>
+
+      {movieComponents}
+      </div>
+    )
+  }
 }
-
-export default App;
